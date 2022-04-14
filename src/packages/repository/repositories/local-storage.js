@@ -11,7 +11,7 @@ export default class LocalStorageRepository extends Repository {
     localStorage.setItem(key, value)
   }
   getItem(key) {
-    localStorage.getItem(key)
+    return localStorage.getItem(key)
   }
   removeItem(key) {
     localStorage.removeItem(key)
