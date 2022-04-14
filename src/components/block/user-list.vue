@@ -1,5 +1,5 @@
 <script>
-import { toRef, ref } from '@vue/reactivity'
+import { toRef, ref } from 'vue'
 import AppBlock from '~/components/app/block.vue'
 import CommonInput from '~/components/common/input.vue'
 import EntitiesUserEntity from '~/components/entities/user-entity.vue'
