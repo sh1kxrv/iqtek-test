@@ -1,6 +1,9 @@
+import { ref } from 'vue'
 import { storage } from '~/packages/repository'
 import { createUser } from '~/utils/user'
-export default function (users) {
+export default function () {
+  const users = ref(JSON.parse(storage.getItem('users') || '[]'))
+
   const getUserIndex = (id) => users.value.findIndex((usr) => usr.id === id)
 
   const save = () => storage.setItem('users', JSON.stringify(users.value))
@@ -23,6 +26,8 @@ export default function (users) {
   }
 
   return {
+    users,
+
     save,
     remove,
     add,

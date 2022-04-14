@@ -62,7 +62,7 @@ export default {
 <template>
   <app-block class="form">
     <common-input
-      v-model="username"
+      v-model.trim="username"
       placeholder="Введите имя пользователя"
       label="Имя пользователя" />
     <div class="form__controls" v-if="!isEdit">

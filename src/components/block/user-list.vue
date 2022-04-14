@@ -20,8 +20,7 @@ export default {
     },
   },
   setup(props) {
-    const search = ref('')
-    const { filtered } = useUserSearch(search, toRef(props, 'entities'))
+    const { search, filtered } = useUserSearch(toRef(props, 'entities'))
     return {
       filtered,
       search,
@@ -33,7 +32,7 @@ export default {
 <template>
   <app-block class="list">
     <div class="list__searchbar">
-      <common-input v-model="search" placeholder="Начните вводить" icon="search" />
+      <common-input v-model.trim="search" placeholder="Начните вводить" icon="search" />
     </div>
     <div class="list__entities">
       <entities-user-entity v-for="entity of filtered" :instance="entity" :key="entity.id" />
