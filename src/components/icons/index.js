@@ -1,0 +1,3 @@
+export { default as IconPerson } from './person.vue'
+export { default as IconSearch } from './search.vue'
+export { default as IconTrash } from './trash.vue'

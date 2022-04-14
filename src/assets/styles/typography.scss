@@ -1,0 +1,21 @@
+@import './mixins.scss';
+
+@mixin font_header_h1 {
+  @include create-font(32px, 700, 38px);
+}
+
+@mixin font_label {
+  @include create-font(12px, 400, 14px);
+}
+
+@mixin font_user_name {
+  @include create-font(14px, 500, 16px);
+}
+
+@mixin font_user_number {
+  @include create-font(12px, 300, 16px);
+}
+
+@mixin font_button {
+  @include create-font(14px, 300, 17px);
+}
