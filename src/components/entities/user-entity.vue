@@ -72,7 +72,7 @@ export default {
     flex-grow: 1;
   }
   &__name {
-    max-width: 160px;
+    max-width: 260px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
