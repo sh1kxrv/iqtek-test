@@ -44,7 +44,7 @@ export default {
       <icon-wrapper @click="editUser" width="24" height="24" class="entity__edit">
         <icon-edit />
       </icon-wrapper>
-      <icon-wrapper @click="removeEntity" width="24" height="24" class="entity__trash">
+      <icon-wrapper @click="removeEntity(instance.id)" width="24" height="24" class="entity__trash">
         <icon-trash />
       </icon-wrapper>
     </div>
