@@ -4,9 +4,8 @@ import { createUser } from '~/utils/user'
 export default function () {
   const users = ref(JSON.parse(storage.getItem('users') || '[]'))
   const getUserIndex = (id) => users.value.findIndex((usr) => usr.id === id)
-  const save = () => {
-    storage.setItem('users', JSON.stringify(users.value))
-  }
+  const save = () => storage.setItem('users', JSON.stringify(users.value))
+
   const add = (name) => {
     users.value.push(createUser(name))
     save()
