@@ -9,3 +9,7 @@ Xaf-Vue3-Template
 ## Repository
 
 Изменить способ хранения можно в `src/main.js`
+
+## Links
+
+Figma: https://www.figma.com/file/TeSiSNJ7tgmD2dFkXZ79kY/iqtek-test?node-id=0%3A1
