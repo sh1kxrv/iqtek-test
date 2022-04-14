@@ -2,14 +2,18 @@
 
 Xaf-Vue3-Template
 
-## Recommended IDE Setup
+## Скрипты
 
-- [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+запуск - `yarn && yarn dev`
 
-## Repository
+## Репозиторий
 
 Изменить способ хранения можно в `src/main.js`
 
-## Links
+## Ссылки
 
 Figma: https://www.figma.com/file/TeSiSNJ7tgmD2dFkXZ79kY/iqtek-test?node-id=0%3A1
+
+## Recommended IDE Setup
+
+- [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
