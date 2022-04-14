@@ -69,7 +69,7 @@ export default {
       <common-button :disabled="!disabledBtn" @click="addClick"> Добавить </common-button>
     </div>
     <div class="form__controls" v-else>
-      <common-button @click="saveClick"> Сохранить </common-button>
+      <common-button :disabled="!disabledBtn" @click="saveClick"> Сохранить </common-button>
       <common-button @click="cancelClick"> Отмена </common-button>
     </div>
   </app-block>
