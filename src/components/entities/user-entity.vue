@@ -15,9 +15,10 @@ export default {
     },
   },
   setup(props) {
-    const { remove, turnEditMode } = inject('user-repository')
+    const { remove } = inject('user-repository')
+    const turnEdit = inject('turn-edit')
 
-    const editUser = () => turnEditMode(props.instance)
+    const editUser = () => turnEdit(true, props.instance)
     const removeEntity = (id) => remove(id)
 
     return {

@@ -14,18 +14,17 @@ export default {
     const isEdit = ref(false)
     const selectedEntity = ref(null)
 
-    const turnEditMode = (entity) => {
+    const turnEdit = (state, entity) => {
       selectedEntity.value = entity
-      isEdit.value = true
+      isEdit.value = state
     }
 
-    const cancelEdit = () => {
-      isEdit.value = false
-      selectedEntity.value = null
-    }
+    const cancelEdit = () => turnEdit(false, null)
 
     const { users, add, remove, edit } = useUserRepository()
-    provide('user-repository', { add, remove, edit, turnEditMode })
+    provide('user-repository', { add, remove, edit })
+
+    provide('turn-edit', turnEdit)
 
     return {
       users,
