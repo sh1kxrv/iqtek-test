@@ -12,6 +12,7 @@ import InitializeViews from '~/views'
 InitializeViews(router, store)
 
 // Инициализация репозитория
+// 'memory-storage' | 'local-storage'
 InitializeRepository('local-storage')
 
 const app = createApp(App)
