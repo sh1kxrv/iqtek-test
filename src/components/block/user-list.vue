@@ -1,8 +1,9 @@
 <script>
-import { ref, computed, toRef } from 'vue'
+import { toRef, ref } from '@vue/reactivity'
 import AppBlock from '~/components/app/block.vue'
 import CommonInput from '~/components/common/input.vue'
 import EntitiesUserEntity from '~/components/entities/user-entity.vue'
+import useUserSearch from '~/composable/user-search'
 export default {
   name: 'BlockUserList',
   components: {
@@ -20,13 +21,7 @@ export default {
   },
   setup(props) {
     const search = ref('')
-    const entities = toRef(props, 'entities')
-    const filtered = computed(() =>
-      search.value.length > 0
-        ? entities.value.filter((entity) => entity.name.includes(search.value))
-        : entities.value
-    )
-
+    const { filtered } = useUserSearch(search, toRef(props, 'entities'))
     return {
       filtered,
       search,
