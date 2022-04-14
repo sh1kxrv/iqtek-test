@@ -4,6 +4,8 @@ import { provide, ref } from 'vue'
 import BlockForm from '~/components/block/form.vue'
 import BlockUserList from '~/components/block/user-list.vue'
 import useUserRepository from '~/composable/user-repository'
+
+import { storage } from '~/packages/repository'
 export default {
   name: 'HomeView',
   components: {
@@ -11,6 +13,8 @@ export default {
     BlockUserList,
   },
   setup() {
+    const users = ref(JSON.parse(storage.getItem('users') || '[]'))
+
     const isEdit = ref(false)
     const selectedEntity = ref(null)
 
@@ -21,7 +25,7 @@ export default {
 
     const cancelEdit = () => turnEdit(false, null)
 
-    const { users, add, remove, edit } = useUserRepository()
+    const { add, remove, edit } = useUserRepository(users)
     provide('user-repository', { add, remove, edit })
 
     provide('turn-edit', turnEdit)
