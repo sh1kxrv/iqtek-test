@@ -3,7 +3,7 @@ import AppBlock from '~/components/app/block.vue'
 import CommonInput from '~/components/common/input.vue'
 import CommonButton from '~/components/common/button.vue'
 
-import { ref, inject, watch, toRef } from 'vue'
+import { ref, inject, watch, toRef, computed } from 'vue'
 export default {
   name: 'BlockForm',
   components: {
@@ -44,12 +44,16 @@ export default {
       if (val) username.value = val.name
     })
 
+    const disabledBtn = computed(() => username.value.length > 0)
+
     return {
       username,
 
       addClick,
       saveClick,
       cancelClick,
+
+      disabledBtn,
     }
   },
 }
@@ -62,7 +66,7 @@ export default {
       placeholder="Введите имя пользователя"
       label="Имя пользователя" />
     <div class="form__controls" v-if="!isEdit">
-      <common-button @click="addClick"> Добавить </common-button>
+      <common-button :disabled="!disabledBtn" @click="addClick"> Добавить </common-button>
     </div>
     <div class="form__controls" v-else>
       <common-button @click="saveClick"> Сохранить </common-button>

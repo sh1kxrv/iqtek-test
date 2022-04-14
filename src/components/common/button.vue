@@ -21,13 +21,19 @@ export default {
   @include font_button;
 
   border-radius: $border-radius-control;
-
-  &:hover {
-    background-color: $primary-black;
-    color: $main-white;
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
   }
-  &:active {
-    opacity: 0.7;
+
+  &:not([disabled]) {
+    &:hover {
+      background-color: $primary-black;
+      color: $main-white;
+    }
+    &:active {
+      opacity: 0.7;
+    }
   }
 }
 </style>
