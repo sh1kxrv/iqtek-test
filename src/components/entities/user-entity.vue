@@ -1,16 +1,29 @@
 <script>
-import { IconPerson, IconTrash } from '~/components/icons'
+import { inject } from 'vue'
+import { IconPerson, IconTrash, IconEdit } from '~/components/icons'
 export default {
   name: 'UserEntity',
   components: {
     IconPerson,
     IconTrash,
+    IconEdit,
   },
   props: {
     instance: {
       type: Object,
       required: true,
     },
+  },
+  setup(props) {
+    const { remove, turnEditMode } = inject('user-repository')
+    const editUser = () => {
+      turnEditMode(props.instance)
+    }
+    const removeEntity = (id) => remove(id)
+    return {
+      removeEntity,
+      editUser,
+    }
   },
 }
 </script>
@@ -24,13 +37,16 @@ export default {
       <h1 class="entity__name">
         {{ instance.name }}
       </h1>
-      <h2 class="entity__number">
-        {{ instance.id }}
-      </h2>
+      <h2 class="entity__number">№ {{ instance.id }}</h2>
     </div>
-    <icon-wrapper width="24" height="24" class="entity__trash">
-      <icon-trash />
-    </icon-wrapper>
+    <div class="entity__controls">
+      <icon-wrapper @click="editUser" width="24" height="24" class="entity__edit">
+        <icon-edit />
+      </icon-wrapper>
+      <icon-wrapper @click="removeEntity" width="24" height="24" class="entity__trash">
+        <icon-trash />
+      </icon-wrapper>
+    </div>
   </div>
 </template>
 
@@ -55,6 +71,10 @@ export default {
     flex-grow: 1;
   }
   &__name {
+    max-width: 160px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     @include font_user_name;
   }
   &__number {
@@ -63,6 +83,16 @@ export default {
   }
   &__trash {
     color: $red-color;
+    cursor: pointer;
+  }
+  &__edit {
+    color: $inactive-icon;
+    cursor: pointer;
+  }
+  &__controls {
+    display: flex;
+    align-items: center;
+    gap: 0 8px;
   }
   &:hover,
   &-selected {

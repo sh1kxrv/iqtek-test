@@ -1,4 +1,6 @@
 <script>
+import { provide, ref } from 'vue'
+
 import BlockForm from '~/components/block/form.vue'
 import BlockUserList from '~/components/block/user-list.vue'
 import useUserRepository from '~/composable/user-repository'
@@ -9,9 +11,29 @@ export default {
     BlockUserList,
   },
   setup() {
+    const isEdit = ref(false)
+    const selectedEntity = ref(null)
+
+    const turnEditMode = (entity) => {
+      selectedEntity.value = entity
+      isEdit.value = true
+    }
+
+    const cancelEdit = () => {
+      isEdit.value = false
+      selectedEntity.value = null
+    }
+
     const { users, add, remove, edit } = useUserRepository()
+    provide('user-repository', { add, remove, edit, turnEditMode })
+
     return {
       users,
+
+      isEdit,
+      selectedEntity,
+
+      cancelEdit,
     }
   },
 }
@@ -20,7 +42,11 @@ export default {
 <template>
   <div class="container">
     <div class="home">
-      <block-form class="home__form" />
+      <block-form
+        class="home__form"
+        :is-edit="isEdit"
+        :selected-entity="selectedEntity"
+        @cancel-edit="cancelEdit" />
       <block-user-list class="home__list" :entities="users" />
     </div>
   </div>
@@ -30,6 +56,7 @@ export default {
 .container {
   max-width: 1200px;
   margin: 0 auto;
+  padding-bottom: 24px;
 }
 .home {
   margin-top: 48px;
@@ -45,6 +72,14 @@ export default {
   }
   &__list {
     grid-area: list;
+  }
+
+  @media screen and (max-width: 720px) {
+    display: block;
+    padding: 0 24px;
+    &__list {
+      margin-top: 24px;
+    }
   }
 }
 </style>
