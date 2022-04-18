@@ -4,8 +4,8 @@ Xaf-Vue3-Template
 
 ## Скрипты
 
-запуск (dev) - `yarn && yarn dev`
-сборка & preview (prod) - `yarn && yarn build && yarn preview`
+- запуск (dev) - `yarn && yarn dev`
+- сборка & preview (prod) - `yarn && yarn build && yarn preview`
 
 ## Репозиторий
 
